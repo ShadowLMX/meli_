@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Meli 🤍</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --azul-pastel: #e3f2fd;
+            --blanco-nube: #ffffff;
+            --gris-peanuts: #4a4a4a;
+            --rojo-suave: #ff8a80;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(180deg, var(--azul-pastel) 0%, var(--blanco-nube) 100%);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--gris-peanuts);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Corazones Flotantes */
+        .heart {
+            position: fixed;
+            color: var(--rojo-suave);
+            font-size: 20px;
+            user-select: none;
+            z-index: 0;
+            animation: float 10s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* SECCIÓN DEL SOBRE */
+        #envelope-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.8s ease;
+            z-index: 10;
+        }
+
+        .envelope {
+            position: relative;
+            width: 280px;
+            height: 180px;
+            background: #fff;
+            border: 2px solid #d1e9ff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+
+        .envelope:hover { transform: scale(1.05); }
+
+        .envelope::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            border-left: 140px solid transparent;
+            border-right: 140px solid transparent;
+            border-top: 90px solid #e1f0ff;
+            transform-origin: top;
+            transition: transform 0.5s ease;
+            z-index: 2;
+        }
+
+        .envelope-label {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4rem;
+            color: #7a9bbd;
+            margin-top: 20px;
+        }
+
+        /* SECCIÓN DE LA CARTA (Oculta al inicio) */
+        #letter-section {
+            display: none;
+            max-width: 550px;
+            width: 90%;
+            margin: 20px auto;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            z-index: 5;
+        }
+
+        /* Animaciones para mostrar carta */
+        .show-letter {
+            display: block !important;
+            animation: fadeInLetter 1.2s ease forwards;
+        }
+
+        @keyframes fadeInLetter {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .letter-content {
+            line-height: 1.7;
+            font-size: 0.95rem;
+            text-align: left;
+            color: #444;
+        }
+
+        .illustration-img {
+            max-width: 140px;
+            width: 100%;
+            height: auto;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .btn-talk {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 25px;
+            border: 1.5px solid var(--gris-peanuts);
+            color: var(--gris-peanuts);
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .btn-talk:hover {
+            background: var(--gris-peanuts);
+            color: white;
+        }
+
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        @media (max-width: 480px) {
+            #letter-section { padding: 25px; width: 85%; }
+            h1 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="music-control" onclick="toggleMusic()">🎵</div>
+
+    <div id="main-wrapper">
+        
+        <div id="envelope-section" onclick="handleOpen()">
+            <div class="envelope">
+                <span style="font-size: 1.5rem; color: #7a9bbd; z-index: 1;">🤍</span>
+            </div>
+            <div class="envelope-label">Toca para abrir, Meli</div>
+        </div>
+
+        <div id="letter-section">
+            <h1>Feliz 14 de febrero, Meli 🤍</h1>
+            <div class="letter-content">
+                <p>Hoy no vengo a pedir que volvamos atrás, ni a forzar nada.</p>
+                <p>Solo quiero decir que hay conversaciones que se quedaron guardadas en el corazón, como cartas que Snoopy escribiría mirando las estrellas.</p>
+                <p>A veces la vida nos mueve, nos cambia, nos enseña… y aunque el tiempo pase, siempre queda un cariño sincero, tranquilo, respetuoso.</p>
+                <p>No quiero incomodar, no quiero presionar. Solo quiero abrir una pequeña puerta con honestidad y decirte que me gustaría que pudiéramos hablar de nuevo, sin expectativas, sin pasado pesado… solo dos personas que se apreciaron y que quizá todavía pueden compartir una conversación bonita.</p>
+                <p>Si algún día sientes lo mismo, aquí estaré. Con respeto, con calma y con un corazón más consciente.</p>
+                <p style="text-align: center; font-weight: bold; margin-top: 20px;">Feliz día.</p>
+            </div>
+
+            <img src="https://i.pinimg.com/236x/45/fd/4d/45fd4df72f2aa2a218adee9f38a5196d.jpg" alt="Snoopy" class="illustration-img">
+
+            <a href="https://wa.me/8443687445" class="btn-talk">¿Podemos hablar de nuevo?</a>
+        </div>
+
+    </div>
+
+    <script>
+        function handleOpen() {
+            const envSection = document.getElementById('envelope-section');
+            const letterSection = document.getElementById('letter-section');
+            
+            // 1. Animamos el sobre desapareciendo
+            envSection.style.opacity = '0';
+            envSection.style.transform = 'scale(0.8)';
+            
+            setTimeout(() => {
+                // 2. Quitamos el sobre del flujo y mostramos la carta
+                envSection.style.display = 'none';
+                letterSection.classList.add('show-letter');
+            }, 600);
+        }
+
+        // Corazones flotantes
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 5 + 6 + 's';
+            heart.style.fontSize = Math.random() * 10 + 15 + 'px';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 9000);
+        }
+        setInterval(createHeart, 800);
+
+        // Música
+        const music = document.getElementById('bgMusic');
+        function toggleMusic() {
+            if (music.paused) music.play();
+            else music.pause();
+        }
+    </script>
+</body>
+</html>
