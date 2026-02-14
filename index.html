@@ -48,7 +48,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: all 0.8s ease;
+            transition: all 0.6s ease;
             z-index: 10;
         }
 
@@ -76,7 +76,6 @@
             border-right: 140px solid transparent;
             border-top: 90px solid #e1f0ff;
             transform-origin: top;
-            transition: transform 0.5s ease;
             z-index: 2;
         }
 
@@ -87,14 +86,14 @@
             margin-top: 20px;
         }
 
-        /* SECCIÓN DE LA CARTA (Oculta al inicio) */
+        /* SECCIÓN DE LA CARTA */
         #letter-section {
             display: none;
             max-width: 550px;
             width: 90%;
-            margin: 20px auto;
+            margin: 40px auto;
             background: white;
-            padding: 35px;
+            padding: 40px;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.08);
             text-align: center;
@@ -103,7 +102,6 @@
             z-index: 5;
         }
 
-        /* Animaciones para mostrar carta */
         .show-letter {
             display: block !important;
             animation: fadeInLetter 1.2s ease forwards;
@@ -115,35 +113,40 @@
 
         h1 {
             font-family: 'Dancing Script', cursive;
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: #333;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .letter-content {
-            line-height: 1.7;
-            font-size: 0.95rem;
+            line-height: 1.8;
+            font-size: 1rem;
             text-align: left;
             color: #444;
+            font-weight: 300;
+        }
+
+        .letter-pesonalized {
+            margin-bottom: 15px;
         }
 
         .illustration-img {
             max-width: 140px;
             width: 100%;
             height: auto;
-            margin: 20px auto;
+            margin: 25px auto;
             display: block;
         }
 
         .btn-talk {
             display: inline-block;
             margin-top: 15px;
-            padding: 12px 25px;
+            padding: 14px 30px;
             border: 1.5px solid var(--gris-peanuts);
             color: var(--gris-peanuts);
             text-decoration: none;
-            border-radius: 25px;
-            font-size: 0.8rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -172,8 +175,9 @@
         }
 
         @media (max-width: 480px) {
-            #letter-section { padding: 25px; width: 85%; }
-            h1 { font-size: 1.6rem; }
+            #letter-section { padding: 30px 25px; width: 88%; }
+            h1 { font-size: 1.8rem; }
+            .letter-content { font-size: 0.95rem; }
         }
     </style>
 </head>
@@ -183,7 +187,7 @@
         <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="music-control" onclick="toggleMusic()">🎵</div>
+    <div class="music-control" onclick="toggleMusic()" title="Música">🎵</div>
 
     <div id="main-wrapper">
         
@@ -191,23 +195,25 @@
             <div class="envelope">
                 <span style="font-size: 1.5rem; color: #7a9bbd; z-index: 1;">🤍</span>
             </div>
-            <div class="envelope-label">Toca para abrir, Meli</div>
+            <div class="envelope-label">Para Meli</div>
         </div>
 
         <div id="letter-section">
             <h1>Feliz 14 de febrero, Meli 🤍</h1>
             <div class="letter-content">
-                <p>Hoy no vengo a pedir que volvamos atrás, ni a forzar nada.</p>
-                <p>Solo quiero decir que hay conversaciones que se quedaron guardadas en el corazón, como cartas que Snoopy escribiría mirando las estrellas.</p>
-                <p>A veces la vida nos mueve, nos cambia, nos enseña… y aunque el tiempo pase, siempre queda un cariño sincero, tranquilo, respetuoso.</p>
-                <p>No quiero incomodar, no quiero presionar. Solo quiero abrir una pequeña puerta con honestidad y decirte que me gustaría que pudiéramos hablar de nuevo, sin expectativas, sin pasado pesado… solo dos personas que se apreciaron y que quizá todavía pueden compartir una conversación bonita.</p>
-                <p>Si algún día sientes lo mismo, aquí estaré. Con respeto, con calma y con un corazón más consciente.</p>
-                <p style="text-align: center; font-weight: bold; margin-top: 20px;">Feliz día.</p>
+                <p class="letter-pesonalized">Hola, Meli.</p>
+                <p class="letter-pesonalized">No vengo a molestar ni a mover nada que deba estar en calma.</p>
+                <p class="letter-pesonalized">Solo paso a desearte un muy bonito San Valentín.</p>
+                <p class="letter-pesonalized">Este día no es solo una celebración romántica. También es un recordatorio de que el cariño verdadero no necesita ruido, ni presión, ni explicaciones complicadas… solo honestidad y buenas intenciones.</p>
+                <p class="letter-pesonalized">No busco incomodar ni forzar nada. Solo dejar abierta una pequeña puerta, con serenidad, para decir que si algún día te nace conversar… aquí estoy. Sin expectativas. Sin pasado pesado. Solo con disposición de escuchar y hablar bonito.</p>
+                <p class="letter-pesonalized">De corazón deseo que hoy sea un día lleno de paz para ti, de sonrisas genuinas y de momentos que te hagan sentir querida.</p>
+                <p class="letter-pesonalized">Y que también sea un día agradable para tu familia, que siempre ha sido parte importante de tu mundo.</p>
+                <p style="text-align: center; font-family: 'Dancing Script', cursive; font-size: 1.6rem; margin-top: 25px;">Feliz día, Meli 🤍</p>
             </div>
 
             <img src="https://i.pinimg.com/236x/45/fd/4d/45fd4df72f2aa2a218adee9f38a5196d.jpg" alt="Snoopy" class="illustration-img">
 
-            <a href="https://wa.me/8443687445" class="btn-talk">¿Podemos hablar de nuevo?</a>
+            <a href="https://wa.me/8443687445" class="btn-talk">Mi número :D</a>
         </div>
 
     </div>
@@ -217,18 +223,17 @@
             const envSection = document.getElementById('envelope-section');
             const letterSection = document.getElementById('letter-section');
             
-            // 1. Animamos el sobre desapareciendo
             envSection.style.opacity = '0';
             envSection.style.transform = 'scale(0.8)';
             
             setTimeout(() => {
-                // 2. Quitamos el sobre del flujo y mostramos la carta
                 envSection.style.display = 'none';
                 letterSection.classList.add('show-letter');
+                // Auto-scroll suave para asegurar que se vea el inicio en móviles
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }, 600);
         }
 
-        // Corazones flotantes
         function createHeart() {
             const heart = document.createElement('div');
             heart.classList.add('heart');
@@ -241,7 +246,6 @@
         }
         setInterval(createHeart, 800);
 
-        // Música
         const music = document.getElementById('bgMusic');
         function toggleMusic() {
             if (music.paused) music.play();
